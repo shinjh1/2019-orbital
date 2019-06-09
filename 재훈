@@ -18,30 +18,33 @@ orbital = {'1s':0,'2s':0,'2p':0,'3s':0,'3p':0,'4s':0,'3d':0,'4p':0,
            '5d':0,'6p':0,'7s':0,'5f':0,'6d':0,'7p':0}
 cnt = a.size()
 for key in orbital.keys() :
-    for i in key :
-        while cnt != 0 :
-            if 's' in i :
-                if orbital[key] <= 2 :
-                    orbital[key] = orbital[key] + a.pop()
-                    cnt = cnt - 1
-                else :
-                    continue
-            elif 'p' in i :
-                if orbital[key] <= 6 :
-                    orbital[key] = orbital[key] + a.pop()
-                    cnt = cnt - 1
-                else :
-                    continue
-            elif 'd' in i :
-                if orbital[key] <= 10 :
-                    orbital[key] = orbital[key] + a.pop()
-                    cnt = cnt - 1
-                else :
-                    continue
-            elif 'f' in i :
-                if orbital[key] <= 14 :
-                    orbital[key] = orbital[key] + a.pop()
-                    cnt = cnt - 1
-                else :
-                    continue
+    while cnt > 0 :
+        if 's' in str(key) : #key를 문자열로 치환, 글자 있는지 확인
+            if orbital[key] < 2 :
+                cnt = cnt - 1
+                orbital[key] = orbital[key] + a.pop()
+                continue #오비탈 하나에 채우고 나머지는 건너뜀
+            else :
+                break #일정한 숫자 이상일 경우 건너뜀
+        elif 'p' in str(key) :
+            if orbital[key] < 6 :
+                cnt = cnt - 1
+                orbital[key] = orbital[key] + a.pop()
+                continue
+            else :
+                break
+        elif 'd' in str(key) :
+            if orbital[key] < 10 :
+                cnt = cnt - 1
+                orbital[key] = orbital[key] + a.pop()
+                continue
+            else :
+                break
+        elif 'f' in str(key) :
+            if orbital[key] < 14 :
+                cnt = cnt - 1
+                orbital[key] = orbital[key] + a.pop()
+                continue
+            else :
+                break
 print(orbital)
