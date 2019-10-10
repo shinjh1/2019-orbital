@@ -76,4 +76,6 @@ else :
                     continue
                 else :
                     break
-print(orbital)
+sorted_list = sorted(orbital)
+for i in sorted(orbital) :
+    print(i, orbital[i])
